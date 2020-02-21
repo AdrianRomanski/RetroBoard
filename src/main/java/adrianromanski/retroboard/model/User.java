@@ -23,4 +23,6 @@ public class User {
     private String username;
 
     private String role;
+
+    private String password;
 }
