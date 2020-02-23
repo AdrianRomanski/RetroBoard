@@ -2,6 +2,7 @@ package adrianromanski.retroboard.jpa_repositories;
 
 import adrianromanski.retroboard.model.Comment;
 import adrianromanski.retroboard.model.CommentType;
+
 import adrianromanski.retroboard.repositories.CommentRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

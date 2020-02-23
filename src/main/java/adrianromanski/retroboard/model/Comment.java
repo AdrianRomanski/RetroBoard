@@ -1,6 +1,5 @@
 package adrianromanski.retroboard.model;
 
-
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -24,9 +23,11 @@ public class Comment {
     @Enumerated(EnumType.STRING)
     private CommentType type;
 
+
     @CreatedDate
     private Timestamp createdDate;
 
     @CreatedBy
     private String createdBy;
+
 }

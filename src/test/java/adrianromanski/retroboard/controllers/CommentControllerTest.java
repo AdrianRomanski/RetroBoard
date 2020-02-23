@@ -1,8 +1,10 @@
 package adrianromanski.retroboard.controllers;
 
+import adrianromanski.retroboard.controller.CommentController;
 import adrianromanski.retroboard.model.Comment;
 import adrianromanski.retroboard.model.CommentType;
 import adrianromanski.retroboard.services.CommentService;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,6 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(CommentController.class)
@@ -66,8 +67,8 @@ public class CommentControllerTest {
         comment2.setType(CommentType.STAR);
         comment2.setCreatedBy("Piotrek");
         comment2.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        List<Comment> comments = Arrays.asList(comment, comment2);
-        when(commentService.getAllCommentForToday()).thenReturn(comments);
+        List<Comment> comments = Arrays.asList(comment,comment2);
+        when(commentService.getAllCommentsForToday()).thenReturn(comments);
 
         // When
         ResultActions resultActions = mockMvc.perform(get("/").with(user("Adrian").roles("USER")));
@@ -91,7 +92,7 @@ public class CommentControllerTest {
                         )
                 )));
 
-        verify(commentService, times(1)).getAllCommentForToday();
+        verify(commentService, times(1)).getAllCommentsForToday();
         verifyNoMoreInteractions(commentService);
     }
 }

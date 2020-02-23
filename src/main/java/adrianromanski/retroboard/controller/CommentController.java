@@ -1,4 +1,4 @@
-package adrianromanski.retroboard.controllers;
+package adrianromanski.retroboard.controller;
 
 import adrianromanski.retroboard.model.Comment;
 import adrianromanski.retroboard.model.CommentType;
@@ -34,10 +34,10 @@ public class CommentController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-        List<Comment> allComments = commentService.getAllCommentForToday();
+        List<Comment> allComments = commentService.getAllCommentsForToday();
         // Grouping comments
         Map<CommentType, List<Comment>> groupedComments = allComments.stream().collect(Collectors.groupingBy(Comment::getType));
-        // Adding attributes to model
+        // Adding attributes
         model.addAttribute("starComments", groupedComments.get(CommentType.STAR));
         model.addAttribute("deltaComments", groupedComments.get(CommentType.DELTA));
         model.addAttribute("plusComments", groupedComments.get(CommentType.PLUS));
@@ -47,10 +47,9 @@ public class CommentController {
 
     @PostMapping("/comment")
     public String createComment(@RequestParam(name = "plusComment", required = false) String plusComment,
-                                       @RequestParam(name = "deltaComment", required = false) String deltaComment,
-                                       @RequestParam(name = "starComment", required = false) String starComment) {
+                               @RequestParam(name = "deltaComment", required = false) String deltaComment,
+                               @RequestParam(name = "starComment", required = false) String starComment) {
         List<Comment> comments = new ArrayList<>();
-
 
         if (StringUtils.isNotEmpty(plusComment)) {
             comments.add(getComment(plusComment, CommentType.PLUS));
@@ -79,4 +78,3 @@ public class CommentController {
         return commentObject;
     }
 }
-

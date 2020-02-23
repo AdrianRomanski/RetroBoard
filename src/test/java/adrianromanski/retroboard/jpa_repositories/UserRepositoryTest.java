@@ -1,9 +1,9 @@
 package adrianromanski.retroboard.jpa_repositories;
 
 import adrianromanski.retroboard.model.User;
+
 import adrianromanski.retroboard.repositories.UserRepository;
 import org.junit.Test;
-import org.assertj.core.api.Assertions;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

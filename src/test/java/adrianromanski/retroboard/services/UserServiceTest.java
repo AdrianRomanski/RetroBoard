@@ -1,6 +1,7 @@
 package adrianromanski.retroboard.services;
 
 import adrianromanski.retroboard.model.User;
+
 import adrianromanski.retroboard.repositories.UserRepository;
 import org.junit.Before;
 import org.junit.Test;

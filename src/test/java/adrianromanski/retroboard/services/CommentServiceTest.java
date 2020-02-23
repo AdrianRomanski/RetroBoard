@@ -2,9 +2,9 @@ package adrianromanski.retroboard.services;
 
 import adrianromanski.retroboard.model.Comment;
 import adrianromanski.retroboard.model.CommentType;
+
+
 import adrianromanski.retroboard.repositories.CommentRepository;
-
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,7 +46,7 @@ public class CommentServiceTest {
         when(commentRepository.findByCreatedYearAndMonthAndDay(now.getYear(), now.getMonth().getValue(), now.getDayOfMonth())).thenReturn(comments);
 
         // When
-        List<Comment> actualComments = commentService.getAllCommentForToday();
+        List<Comment> actualComments = commentService.getAllCommentsForToday();
 
         // Then
         verify(commentRepository, times(1)).findByCreatedYearAndMonthAndDay(now.getYear(), now.getMonth().getValue(), now.getDayOfMonth());
